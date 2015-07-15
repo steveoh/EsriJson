@@ -5,6 +5,11 @@ namespace EsriJson.Net.Geometry
     [JsonObject(MemberSerialization.OptIn)]
     public class Point : EsriJsonObject
     {
+        public Point()
+        {
+            
+        }
+
         public Point(double x, double y)
         {
             X = x;
