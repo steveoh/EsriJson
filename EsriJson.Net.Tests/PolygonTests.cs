@@ -11,10 +11,9 @@ namespace EsriJson.Net.Tests
     public class PolygonTests
     {
         [Test]
-        [ExpectedException(typeof (ArgumentException))]
         public void ThrowsErrorIfRingIsNotClosed()
         {
-            var polygon = new Polygon(new List<RingPoint[]>
+            Assert.Throws<ArgumentException>(() => new Polygon(new List<RingPoint[]>
                 {
                     new[]
                         {
@@ -22,25 +21,23 @@ namespace EsriJson.Net.Tests
                             new RingPoint(1, 0),
                             new RingPoint(2, 0)
                         }
-                });
+                }));
         }
 
         [Test]
-        [ExpectedException(typeof (ArgumentException))]
         public void ThrowsErrorOnLessThanThreePointsInRing()
         {
-            var polygon = new Polygon(new List<RingPoint[]>
+            Assert.Throws<ArgumentException>(() => new Polygon(new List<RingPoint[]>
                 {
                     new[]
                         {
                             new RingPoint(0, 0),
                             new RingPoint(1, 0)
                         }
-                });
+                }));
         }
 
         [Test]
-        [ExpectedException(typeof(ArgumentException))]
         public void ThrowsErrorOnLessThanThreePointsInRingOnAdd()
         {
             var rings = new List<RingPoint[]>
@@ -52,11 +49,10 @@ namespace EsriJson.Net.Tests
                 };
 
             var polygon = new Polygon();
-            polygon.AddRing(rings);
+            Assert.Throws<ArgumentException>(() => polygon.AddRing(rings));
         }
 
         [Test]
-        [ExpectedException(typeof (ArgumentException))]
         public void ThrowsErrorOnLessThanThreePointsInRingWithMultipleRings()
         {
             var rings = new List<RingPoint[]>
@@ -74,7 +70,7 @@ namespace EsriJson.Net.Tests
                         }
                 };
 
-            var p = new Polygon(rings);
+            Assert.Throws<ArgumentException>(() => new Polygon(rings));
         }
 
         [Test]
@@ -98,7 +94,7 @@ namespace EsriJson.Net.Tests
 
             Debug.Print(json);
 
-            Assert.That(json, Is.StringStarting("{\"rings\":[[["));
+            Assert.That(json, Does.StartWith("{\"rings\":[[["));
         }
 
         [Test]
