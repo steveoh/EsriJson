@@ -1,5 +1,4 @@
-﻿using EsriJson.Net.CoordinateReferenceSystem;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 
 namespace EsriJson.Net
 {
@@ -7,7 +6,7 @@ namespace EsriJson.Net
     public abstract class EsriJsonObject
     {
         [JsonProperty(PropertyName = "spatialReference")]
-        public CRS CRS { get; set; }
+        public Crs CRS { get; set; }
 
         [JsonProperty(PropertyName = "type")]
         public abstract string Type { get; }
