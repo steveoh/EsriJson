@@ -1,7 +1,8 @@
-using System;
+﻿using System;
+using EsriJson.Net.Geometry;
 using Newtonsoft.Json;
 
-namespace EsriJson.Net.Geometry.Converters
+namespace EsriJson.Net.Geometries.Converters
 {
     public class RingPointConverter : JsonConverter
     {
@@ -20,7 +21,7 @@ namespace EsriJson.Net.Geometry.Converters
 
         public override bool CanConvert(Type objectType)
         {
-            return objectType == typeof (RingPoint);
+            return objectType == typeof(RingPoint);
         }
     }
 }

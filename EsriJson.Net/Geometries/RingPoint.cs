@@ -1,5 +1,5 @@
-﻿using EsriJson.Net.Geometry.Converters;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
+using EsriJson.Net.Geometries.Converters;
 
 namespace EsriJson.Net.Geometry
 {
