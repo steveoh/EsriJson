@@ -1,8 +1,9 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using EsriJson.Net.Geometry;
 using Newtonsoft.Json;
 
-namespace EsriJson.Net.Graphic
+namespace EsriJson.Net
 {
     public class Graphic : IGeometry
     {
