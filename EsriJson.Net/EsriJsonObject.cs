@@ -1,14 +1,10 @@
-﻿using Newtonsoft.Json;
+﻿using System.Text.Json.Serialization;
 
-namespace EsriJson.Net
-{
-    [JsonObject(MemberSerialization.OptIn)]
-    public abstract class EsriJsonObject
-    {
-        [JsonProperty(PropertyName = "spatialReference")]
+namespace EsriJson.Net {
+    public abstract class EsriJsonObject {
+        [JsonPropertyName("spatialReference")]
         public Crs CRS { get; set; }
 
-        [JsonProperty(PropertyName = "type")]
         public abstract string Type { get; }
     }
 }

@@ -1,27 +1,17 @@
 ﻿using System;
+using System.Text.Json;
+using System.Text.Json.Serialization;
 using EsriJson.Net.Geometry;
-using Newtonsoft.Json;
 
-namespace EsriJson.Net.Geometries.Converters
-{
-    public class RingPointConverter : JsonConverter
-    {
-        public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
-        {
+namespace EsriJson.Net.Geometries.Converters {
+    public class RingPointConverter : JsonConverter<RingPoint> {
+        public override void Write(Utf8JsonWriter writer, RingPoint value, JsonSerializerOptions options) {
             writer.WriteStartArray();
-            writer.WriteValue(((RingPoint)value).X);
-            writer.WriteValue(((RingPoint)value).Y);
+            writer.WriteNumberValue(value.X);
+            writer.WriteNumberValue(value.Y);
             writer.WriteEndArray();
         }
 
-        public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
-        {
-            return null;
-        }
-
-        public override bool CanConvert(Type objectType)
-        {
-            return objectType == typeof(RingPoint);
-        }
+        public override RingPoint Read(ref Utf8JsonReader reader, Type type, JsonSerializerOptions options) => null;
     }
 }

@@ -1,11 +1,8 @@
-﻿using Newtonsoft.Json;
+﻿using System.Text.Json.Serialization;
 
-namespace EsriJson.Net
-{
-  [JsonObject(MemberSerialization.OptIn)]
-  public class Crs
-  {
-      [JsonProperty(PropertyName = "wkid")]
-      public int WellKnownId { get; set; }
-  }
+namespace EsriJson.Net {
+    public class Crs {
+        [JsonPropertyName("wkid")]
+        public int WellKnownId { get; set; }
+    }
 }

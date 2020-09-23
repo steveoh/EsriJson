@@ -1,32 +1,20 @@
-﻿using Newtonsoft.Json;
+﻿namespace EsriJson.Net.Geometry {
+    public class Point : EsriJsonObject {
+        public Point() {
 
-namespace EsriJson.Net.Geometry
-{
-  [JsonObject(MemberSerialization.OptIn)]
-  public class Point : EsriJsonObject
-  {
-      public Point()
-      {
+        }
 
-      }
+        public Point(double x, double y) {
+            X = x;
+            Y = y;
+        }
 
-      public Point(double x, double y)
-      {
-          X = x;
-          Y = y;
-      }
+        public double X { get; set; }
 
-      [JsonProperty(PropertyName = "x", Required = Required.Always)]
-      public double X { get; set; }
+        public double Y { get; set; }
 
-      [JsonProperty(PropertyName = "y", Required = Required.Always)]
-      public double Y { get; set; }
+        public bool Equals(Point obj) => obj != null && obj.X == X && obj.Y == Y;
 
-      public bool Equals(Point obj)
-      {
-          return obj != null && obj.X == X && obj.Y == Y;
-      }
-
-      public override string Type => "point";
-  }
+        public override string Type => "point";
+    }
 }
